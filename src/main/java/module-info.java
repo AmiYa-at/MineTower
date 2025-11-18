@@ -1,8 +1,6 @@
-module MineTower {
+open module com.amiya.mt {
     requires com.almasb.fxgl.all;
     requires javafx.graphics;
     requires javafx.fxml;
-
-    opens org.example to javafx.fxml;
-    exports org.example;
+    requires annotations;
 }
