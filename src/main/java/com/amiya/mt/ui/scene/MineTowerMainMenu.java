@@ -19,7 +19,7 @@ public class MineTowerMainMenu extends FXGLMenu {
         StartTitle.setPreserveRatio(true);
         StartTitle.setFitWidth(500);
         var menuBox=new VBox(30,StartTitle,
-                new MenuButton("StartGame.png",300,()->FXGL.getSceneService().pushSubScene(new ChooseCharactersMenu())));
+                new MenuButton("start.png",300,()->FXGL.getSceneService().pushSubScene(new ChooseCharactersMenu())));
         menuBox.setAlignment(Pos.CENTER);
         menuBox.setPrefSize(getAppWidth(),getAppHeight());
         menuBox.setStyle("-fx-background-color: #333;");

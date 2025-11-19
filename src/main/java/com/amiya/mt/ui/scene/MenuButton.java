@@ -13,7 +13,7 @@ public class MenuButton extends Parent {
 
         //为按键样式变化绑定事件
         var buttonScaleChange=Bindings.when(pressedProperty()).then(0.87).otherwise(
-                Bindings.when(hoverProperty()).then(0.95).otherwise(1.0));
+                Bindings.when(hoverProperty()).then(0.99).otherwise(1.0));
         btn.scaleXProperty().bind(buttonScaleChange);
         btn.scaleYProperty().bind(buttonScaleChange);
 
