@@ -4,9 +4,7 @@ import com.almasb.fxgl.app.scene.FXGLMenu;
 import com.almasb.fxgl.app.scene.MenuType;
 import com.almasb.fxgl.dsl.FXGL;
 import javafx.geometry.Pos;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import org.jetbrains.annotations.NotNull;
 
 public class MineTowerMainMenu extends FXGLMenu {
 
@@ -19,7 +17,8 @@ public class MineTowerMainMenu extends FXGLMenu {
         StartTitle.setPreserveRatio(true);
         StartTitle.setFitWidth(500);
         var menuBox=new VBox(30,StartTitle,
-                new MenuButton("start.png",300,()->FXGL.getSceneService().pushSubScene(new ChooseCharactersMenu())));
+                new MenuButton("开始游戏",300,50,()->FXGL.getSceneService().pushSubScene(new ChooseCharactersMenu()),"button.png","button_highlighted.png","button_disabled.png"),
+                new MenuButton("退出游戏",300,50,()->FXGL.getGameController().exit(),"button.png","button_highlighted.png","button_disabled.png"));
         menuBox.setAlignment(Pos.CENTER);
         menuBox.setPrefSize(getAppWidth(),getAppHeight());
         menuBox.setStyle("-fx-background-color: #333;");
