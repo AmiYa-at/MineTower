@@ -17,8 +17,8 @@ public class MineTowerMainMenu extends FXGLMenu {
         StartTitle.setPreserveRatio(true);
         StartTitle.setFitWidth(500);
         var menuBox=new VBox(30,StartTitle,
-                new MenuButton("开始游戏",300,50,()->FXGL.getSceneService().pushSubScene(new ChooseCharactersMenu()),"button.png","button_highlighted.png","button_disabled.png"),
-                new MenuButton("退出游戏",300,50,()->FXGL.getGameController().exit(),"button.png","button_highlighted.png","button_disabled.png"));
+                new MenuButton("开始游戏",300,50,()->FXGL.getSceneService().pushSubScene(new ChooseCharactersMenu()),"button.png","button_highlighted.png","button_disabled.png",true),
+                new MenuButton("退出游戏",300,50,()->FXGL.getGameController().exit(),"button.png","button_highlighted.png","button_disabled.png",true));
         menuBox.setAlignment(Pos.CENTER);
         menuBox.setPrefSize(getAppWidth(),getAppHeight());
         menuBox.setStyle("-fx-background-color: #333;");

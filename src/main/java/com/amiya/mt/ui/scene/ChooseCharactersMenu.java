@@ -28,14 +28,14 @@ public class ChooseCharactersMenu extends SubScene {
         backAndContinueBox.setPrefSize(FXGL.getAppWidth()-50,70);
 
         //设置左侧返回按钮
-        var backButton = new MenuButton("返回",70,40,()-> FXGL.getSceneService().popSubScene(),"button.png","button_highlighted.png","button_disabled.png");
+        var backButton = new MenuButton("返回",100,40,()-> FXGL.getSceneService().popSubScene(),"button.png","button_highlighted.png","button_disabled.png",true);
 
         //设置填充节点
         var spacer=new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
         //设置右侧启程按钮
-        var startButton=new MenuButton("启程",70,40,()->{},"button.png","button_highlighted.png","button_disabled.png");
+        var startButton=new MenuButton("启程",100,40,()->FXGL.getSceneService().pushSubScene(new ChooseStartPrize()),"button.png","button_highlighted.png","button_disabled.png",true);
         startButton.setVisible(false);
 
         //添加到HBox
@@ -52,8 +52,8 @@ public class ChooseCharactersMenu extends SubScene {
         charactersButtonBox.setPrefSize(FXGL.getAppWidth(),50);
 
         //逐个实例化角色对应的按钮
-        /*for(CharactersLIst character:CharactersLIst.values()){
-            characterButtonsList.add(new MenuButton(character.getCharactersData().getNamePath(),50,
+        for(CharactersLIst character:CharactersLIst.values()){
+            characterButtonsList.add(new MenuButton("",50,50,
                     ()->{
                 choose=character;
                 BackgroundImage backgroundImage=new BackgroundImage(
@@ -72,7 +72,7 @@ public class ChooseCharactersMenu extends SubScene {
                 Background bg=new Background(backgroundImage);
                 background.setBackground(bg);
                 startButton.setVisible(true);
-            }));
+            },character.getCharactersData().getNamePath(),character.getCharactersData().getNamePath(),character.getCharactersData().getNamePath(),false));
         }
 
         //将角色按钮添加到HBox
@@ -80,7 +80,7 @@ public class ChooseCharactersMenu extends SubScene {
             charactersButtonBox.getChildren().addAll(button);
         }
         charactersButtonBox.setAlignment(Pos.CENTER);
-        charactersButtonBox.setLayoutY(400);*/
+        charactersButtonBox.setLayoutY(400);
 
 
 
@@ -89,6 +89,6 @@ public class ChooseCharactersMenu extends SubScene {
 
 
 
-        getContentRoot().getChildren().addAll(background,backAndContinueBox/*,charactersButtonBox*/);
+        getContentRoot().getChildren().addAll(background,backAndContinueBox,charactersButtonBox);
     }
 }

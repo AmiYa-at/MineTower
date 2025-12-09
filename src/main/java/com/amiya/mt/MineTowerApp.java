@@ -8,6 +8,8 @@ import com.almasb.fxgl.dsl.FXGL;
 import com.amiya.mt.ui.scene.MineTowerMainMenu;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Map;
+
 public class MineTowerApp extends GameApplication{
 
 
@@ -24,6 +26,13 @@ public class MineTowerApp extends GameApplication{
                 return new MineTowerMainMenu();
             }
         });
+    }
+
+
+
+    @Override
+    protected void initGameVars(Map<String,Object> vars){
+        vars.put("character",null);
     }
 
     public static void main(String[] args) {
