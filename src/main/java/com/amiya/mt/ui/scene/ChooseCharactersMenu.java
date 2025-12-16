@@ -35,7 +35,9 @@ public class ChooseCharactersMenu extends SubScene {
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
         //设置右侧启程按钮
-        var startButton=new MenuButton("启程",100,40,()->FXGL.getSceneService().pushSubScene(new ChooseStartPrize()),"button.png","button_highlighted.png","button_disabled.png",true);
+        var startButton=new MenuButton("启程",100,40,()->{
+            FXGL.getGameController().startNewGame();
+            FXGL.set("character",choose);},"button.png","button_highlighted.png","button_disabled.png",true);
         startButton.setVisible(false);
 
         //添加到HBox
@@ -53,26 +55,29 @@ public class ChooseCharactersMenu extends SubScene {
 
         //逐个实例化角色对应的按钮
         for(CharactersLIst character:CharactersLIst.values()){
-            characterButtonsList.add(new MenuButton("",50,50,
-                    ()->{
-                choose=character;
-                BackgroundImage backgroundImage=new BackgroundImage(
-                        FXGL.image(character.getCharactersData().getBackgroundPath()),
-                        BackgroundRepeat.NO_REPEAT,
-                        BackgroundRepeat.NO_REPEAT,
-                        BackgroundPosition.CENTER,
-                        new BackgroundSize(
-                                BackgroundSize.AUTO,
-                                BackgroundSize.AUTO,
-                                true,
-                                true,
-                                true,
-                                false
-                        ));
-                Background bg=new Background(backgroundImage);
-                background.setBackground(bg);
-                startButton.setVisible(true);
-            },character.getCharactersData().getNamePath(),character.getCharactersData().getNamePath(),character.getCharactersData().getNamePath(),false));
+            if(character!=CharactersLIst.NULL){
+                characterButtonsList.add(new MenuButton("",50,50,
+                        ()->{
+                            choose=character;
+                            BackgroundImage backgroundImage=new BackgroundImage(
+                                    FXGL.image(character.getCharactersData().getBackgroundPath()),
+                                    BackgroundRepeat.NO_REPEAT,
+                                    BackgroundRepeat.NO_REPEAT,
+                                    BackgroundPosition.CENTER,
+                                    new BackgroundSize(
+                                            BackgroundSize.AUTO,
+                                            BackgroundSize.AUTO,
+                                            true,
+                                            true,
+                                            true,
+                                            false
+                                    ));
+                            Background bg=new Background(backgroundImage);
+                            background.setBackground(bg);
+                            startButton.setVisible(true);
+                        },character.getCharactersData().getNamePath(),character.getCharactersData().getNamePath(),character.getCharactersData().getNamePath(),false));
+            }
+
         }
 
         //将角色按钮添加到HBox
